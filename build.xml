@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project default="warTarget" basedir=".">
+	<property name="tomcat" value="C:/Users/Dell/Downloads/apache-tomcat-8.0.38" />
+	<property name="tomcat.deployment" value="${tomcat}/webapps" />
+	<property name="base" value="." />
+	<property name="source" value="${base}/src" />
+
+	<target name="warTarget">
+		<war warfile="antprjt.war" needxmlfile="false">
+			<fileset dir="${source}/com/din/views" />
+		</war>
+		<antcall target="deployTarget" />
+	</target>
+	<target name="deployTarget">
+		<copy file="${base}/antprjt.war" todir="${tomcat.deployment}" />
+	</target>
+</project>
